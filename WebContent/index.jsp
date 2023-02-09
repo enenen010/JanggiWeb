@@ -12,7 +12,7 @@
 <body>
 
 <div id="header">
-<jsp:include page="header.jsp"></jsp:include>
+<jsp:include page="./module/header.jsp"></jsp:include>
 </div>
 
 <div id="section">
@@ -21,10 +21,10 @@
     </div>
 </div>
 <div id="aside">
-<%@include file="sideBar.jsp" %>
+<%@include file="./module/sideBar.jsp" %>
 </div>
 <div id="footer">
-<%@include file="footer.jsp" %>
+<%@include file="./module/footer.jsp" %>
 </div>
 </body>
 </html>

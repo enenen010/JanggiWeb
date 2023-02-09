@@ -7,9 +7,10 @@
 <title>Insert title here</title>
 <style type="text/css" rel="stylesheet">
 </style>
-<script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" >
-
+    window.onload=function(){
+        
+    }
 </script>
 </head>
 <body>
@@ -31,7 +32,7 @@
             </li>
             <li>
                 <ul>Q & A
-                    <li><a href="#">기보 Q & A</a></li>
+                    <li><a href="../qna/notationqna.jsp">기보 Q & A</a></li>
                     <li><a href="#">자유 Q & A</a></li>
                 </ul>
             </li>
