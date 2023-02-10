@@ -9,7 +9,16 @@
 </style>
 <script type="text/javascript" >
     window.onload=function(){
+    	var urlarr= [];
+        var navs = document.querySelectorAll('#nav>ul>li');
         
+        navs.forEach(function(me){
+            var menus=me.querySelectorAll('ul>li>a');
+            menus.forEach(function(a){
+                if(location.pathname!='/JanngiWeb/')
+                    a.setAttribute('href','.'+a.getAttribute('href'));
+            });
+        });
     }
 </script>
 </head>
@@ -32,7 +41,7 @@
             </li>
             <li>
                 <ul>Q & A
-                    <li><a href="../qna/notationqna.jsp">기보 Q & A</a></li>
+                    <li><a href="./qna/notationqna.jsp">기보 Q & A</a></li>
                     <li><a href="#">자유 Q & A</a></li>
                 </ul>
             </li>
