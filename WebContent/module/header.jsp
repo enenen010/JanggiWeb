@@ -9,14 +9,27 @@
 </style>
 <script type="text/javascript" >
     window.onload=function(){
+    	
+    	<%if(session.getAttribute("id")!=null){%>
+        var lo = document.querySelector('#login>a');
+        lo.setAttribute('href','./login/logout');
+        lo.innerText='로그아웃';
+    	<%}%>
+
+    	if(location.pathname!='/JanggiWeb/'){
+            var a = document.querySelector('#login>a');
+            a.setAttribute('href','.'+a.getAttribute('href'));
+        }
+
     	var urlarr= [];
         var navs = document.querySelectorAll('#nav>ul>li');
         
         navs.forEach(function(me){
             var menus=me.querySelectorAll('ul>li>a');
             menus.forEach(function(a){
-                if(location.pathname!='/JanngiWeb/')
+                if(location.pathname!='/JanggiWeb/'){
                     a.setAttribute('href','.'+a.getAttribute('href'));
+                }
             });
         });
     }
@@ -25,7 +38,7 @@
 <body>
     <div>
         <h1>12K-Chess</h1>
-        <div><a href="#">로그인</a></div>
+        <div id="login"><a href="./login/login.jsp">로그인</a></div>
     </div>
     <div id="nav">
 		<ul>

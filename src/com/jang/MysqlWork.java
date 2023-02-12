@@ -49,6 +49,7 @@ public class MysqlWork {
 		} catch (SQLException e) {
 			System.out.println(e.toString()+"문법 오류 또는 실행오류");
 		} catch (ClassNotFoundException e) {
+			System.out.println(e);
 			System.out.println("드라이버 로딩 확인");
 			System.out.println("드라이버 등록이 잘못되었습니다.");
 		} finally {
