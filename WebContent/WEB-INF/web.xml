@@ -26,4 +26,13 @@
   	<servlet-name>loginIsert</servlet-name>
   	<url-pattern>/login/loginIsert</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>logout</servlet-name>
+  	<servlet-class>com.login.logoutController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>logout</servlet-name>
+  	<url-pattern>/login/logout</url-pattern>
+  </servlet-mapping>
 </web-app>

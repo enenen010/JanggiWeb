@@ -11,14 +11,14 @@
 <script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" >
     $(function(){
-        $(':submit').click(function(){
+    	$('form').submit(function(){
             for(input of $('form>div>div>input')){ 
                 $(input).next().remove();
                 if($(input).val()==''){
                     $(input).after($('<span/>')
                             .css('color','red')
                             .text($(input).prev().text()+'를 입력하지 않았습니다.'));
-                    $('form').submit(function(){return false;});
+                    return false;
                 }
              }
         });
@@ -33,7 +33,7 @@
 
 <div id="section">
     <div id="article">
-        <form action="loginIsert">
+        <form action="loginIsert" method="post">
             <div>
                 <div>
                     <label for="id">아이디</label>

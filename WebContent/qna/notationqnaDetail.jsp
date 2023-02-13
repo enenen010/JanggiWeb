@@ -29,30 +29,28 @@
 
 <div id="section">
     <div id="article">
-        <table>
-            <tbody>
-                <tr>
-                    <td>제목:</td>
-                    <td><%=detail[3] %></td>
-                </tr>
-                <tr>
-                    <td>작성자:</td>
-                    <td><%=detail[6] %></td>
-                </tr>
-                <tr>
-                    <td>색:</td>
-                    <td><%=detail[4] %></td>
-                </tr>
-                <tr>
-                    <td>내용:</td>
-                    <td>
-                        <div>
-                            <%=detail[1] %>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div>
+            <div>
+                <a href="notationqnaAdd.jsp?key=<%=request.getParameter("key") %>">수정</a>
+                <a href="notationqnaDetail.jsp">삭제</a>
+            </div>
+            <div>
+                <span>제목:</span>
+                <span><%=detail[3] %></span>
+            </div>
+            <div>
+                <span>작성자:</span>
+                <span><%=detail[6] %></span>
+            </div>
+            <div>
+                <span>색:</span>
+                <span><%=detail[4] %></span>
+            </div>
+            <div>
+                <div>내용:</div>
+                <div><%=detail[1] %></div>
+            </div>
+        </div>
         <div id="notation">
             <div>기보:</div>
             <div>

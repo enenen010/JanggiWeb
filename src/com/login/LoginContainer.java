@@ -1,8 +1,12 @@
 package com.login;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,21 +20,32 @@ public class LoginContainer extends HttpServlet{
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		MysqlWork mysqlWork = new MysqlWork();
-		String sql="SELECT CAST(COUNT(id) AS signed integer) FROM user "+
-				   "WHERE id = '"+req.getParameter("id")+"'"+
-				   "AND pw = '"+req.getParameter("pw")+"'";
-		int loginCnt = (int)((long)mysqlWork.executeQueryOne(sql, 1)[0]);
+		PrintWriter out;
+		LoginDao loginDao = new LoginDao();
+		LoginDto bean = loginDao.getOne(req.getParameter("id"));
 		
 		req.setCharacterEncoding("UTF-8");
-		if(loginCnt==0) {
-			req.setAttribute("fail", "o");
-			resp.sendRedirect("login.jsp");
-		}else if(loginCnt==1){
-			req.getSession().setAttribute("id", req.getParameter("id"));
-			resp.sendRedirect("../");
-		}else {
-			resp.setStatus(500, "해당 유저의 상태에 이상이 발생하였습니다. 관리자에게 문의하세요");
+		if(bean==null) {
+			resp.setContentType("text/html;charset=utf-8");
+			out = resp.getWriter();
+			out.println("<script>");
+			out.println("alert('아이디 혹은 패스워드가 잘못되었습니다.')");
+			out.println("location.replace(\"login.jsp\")");
+			out.println("</script>");
+			out.close();
+		}else{
+			if(bean.getPw().equals(req.getParameter("pw"))) {
+				req.getSession().setAttribute("id", req.getParameter("id"));
+				resp.sendRedirect(req.getContextPath());
+			}else {
+				out = resp.getWriter();
+				out.println("<script>");
+				out.println("alert('패스워드가 잘못되었습니다.')");
+				out.println("location.replace(\"login.jsp\")");
+				out.println("</script>");
+				out.close();
+			}
+			
 		}
 	}
 
