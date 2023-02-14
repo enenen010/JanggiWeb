@@ -41,37 +41,38 @@
 </script>
 </head>
 <body>
-
-<div id="header">
-<jsp:include page="../module/header.jsp"></jsp:include>
-</div>
-
-<div id="section">
-    <div id="article">
-        <form action="loginGo" method="post">
-            <div>
-                <div>
-                    <label for="id">아이디</label>
-                    <input type="text" name="id">
-                </div>
-                <div>
-                    <label for="pw">패스워드</label>
-                    <input type="password" name="pw">
-                </div>
+    <div id="container">
+        <div id="header">
+            <jsp:include page="../module/header.jsp"></jsp:include>
+        </div>
+        
+        <div id="section">
+            <div id="article">
+                <form action="loginGo" method="post">
+                    <div>
+                        <div>
+                            <label for="id">아이디</label>
+                            <input type="text" name="id">
+                        </div>
+                        <div>
+                            <label for="pw">패스워드</label>
+                            <input type="password" name="pw">
+                        </div>
+                    </div>
+                    <div>
+                        <button type="submit">로그인</button>
+                        <button type="reset">초기화</button>
+                        <a href="join.jsp">회원가입</a>
+                    </div>
+                </form>
             </div>
-            <div>
-                <button type="submit">로그인</button>
-                <button type="reset">초기화</button>
-                <a href="join.jsp">회원가입</a>
-            </div>
-        </form>
+        </div>
+        <div id="aside">
+            <%@include file="../module/sideBar.jsp" %>
+        </div>
+        <div id="footer">
+            <%@include file="../module/footer.jsp" %>
+        </div>
     </div>
-</div>
-<div id="aside">
-<%@include file="../module/sideBar.jsp" %>
-</div>
-<div id="footer">
-<%@include file="../module/footer.jsp" %>
-</div>
 </body>
 </html>

@@ -7,38 +7,95 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css" rel="stylesheet">
-	div>span{
-		float: left;
+	#headline{
+
+        display: block;
+        width: 1000px;
+        margin: 0px auto;
+        margin-left: 200px;
+    }
+	#headline>span{
+        float: left;
 	}
-	div>span>a>h1{
+	#headline>span>a>h1{
         text-indent: -9999px;
         width: 140px;
         height: 70px;
         background-image: url('<%=root %>/imgs/logo.png');
 	}
-	#login{
-		float: right;
-		width: 140px;
+
+	
+    
+
+    #nav{
+        padding: 0px;
+        clear: both;
+        position:fixed;
+        width: 200px;
+        height: 100%;
+        left: 0px;
+        top: 0px;
+        background-color: aqua;
+    }
+    #nav>ul{
+        padding: 0px;
+        margin: 0px 0px 0px 0px;
+        list-style: none;
+        display: block;
+        width: 200px;
+        margin-left: -3px;
+    }
+    #nav>ul>li{
+        margin-left: 0px;
+        padding: 0px;
+        background-color: gray;
+    }
+    #nav>ul>li>a,
+    #nav>ul>li>ul>li>a{
+        line-height: 35px;
+        text-align: center;
+        display: block;
+        text-decoration: none;
+        color: aliceblue;
+        width: 200px;
+        height: 35px;
+        margin-right: 3px;
+    }
+    #nav>ul>li>a:hover{
+        background-color: rgb(100, 100, 100);
+    }
+    #nav>ul>li>ul{
+        display: block;
+        padding: 0px;
+        list-style: none;
+        position: absolute;
+        width: 200px;
+        height: 100%;
+        left: 196px;
+        top: 0px;
+        background-color: rgb(100, 100, 100);
+    }
+    #nav>ul>li>ul>li{
+        padding: 0px;
+        background-color: rgb(100, 100, 100);
+    }
+    #nav>ul>li>ul>li>a:hover{
+        background-color: rgb(80, 80, 80);
+    }
+
+    #nav>div{
+		width: 200px;
         height: 50px;
 	}
-    #login>a{
+    #nav>div>a{
     	display:inline-block;
-        width: 140px;
+        width: 200px;
         height: 50px;
         text-indent: -9999px;
     }
-    .login{
-    	background-image: url('<%=root %>/imgs/login.png');
-    }
-    .logout{
-        background-image: url('<%=root %>/imgs/logout.png');
-    }
+    .login{background-image: url('<%=root %>/imgs/login.png');}
+    .logout{background-image: url('<%=root %>/imgs/logout.png');}
 
-    #nev{height: 35px;}
-    #nev>ul{margin: 0px auto; padding: 0px; width: 440px;}
-    #nev>ul>li{}
-    #nev>ul>li>ul{}
-    #new>ul>li>ul>li{}
     
 </style>
 <script type="text/javascript" src="<%=root %>/js/jquery-1.12.4.min.js"></script>
@@ -46,7 +103,7 @@
     window.onload=function(){
     	
     	<%if(session.getAttribute("id")!=null){%>
-        var lo = document.querySelector('#login>a');
+        var lo = document.querySelector('.login>a');
         lo.setAttribute('href','<%=root %>/login/logout');
         lo.innerText='로그아웃';
         lo.parentElement.classList.replace('login','logout');
@@ -54,47 +111,47 @@
     }
 
     $(function(){
-	    $('ul>li:eq(2)')
-		//.click(function(){return false;})
-		.mouseenter(function(){
-			$(this).find('ol').show();
-		})
-		.mouseleave(function(){
-			$(this).find('ol').hide();
-		});
+        $('#nav>ul>li>ul').hide();
+        $('#nav>ul>li>ul').eq(1).show();
+        
     });
 </script>
 </head>
 <body>
-    <div>
+    <div id="navBtn"></div>
+    <div id="headline">
         <span><a href="<%=root %>"><h1>12K-Chess</h1></a></span>
-        <span id="login" class="login"><a href="<%=root %>/login/login.jsp">로그인</a></span>
     </div>
     <div id="nav">
 		<ul>
             <li>
-                <ul>경기
+                <a href="#">경기</a>
+                <ul>
                     <li><a href="<%=root %>">경기현황</a></li>
                 </ul>
             </li>
             <li>
-                <ul>집계
+                <a href="#">집계</a>
+                <ul>
                     <li><a href="<%=root %>">랭킹</a></li>
                 </ul>
             </li>
             <li>
-                <ul>Q & A
+                <a href="#">Q & A</a>
+                <ul>
                     <li><a href="<%=root %>/qna/notationqna.jsp">기보 Q & A</a></li>
                     <li><a href="<%=root %>">자유 Q & A</a></li>
                 </ul>
             </li>
             <li>
-                <ul>정보
+                <a href="#">정보</a>
+                <ul>
                     <li><a href="<%=root %>">게임 룰</a></li>
                     <li><a href="<%=root %>">경기신청</a></li>
                 </ul>
             </li>
         </ul>
+        <div class="login"><a href="<%=root %>/login/login.jsp">로그인</a></div>
     </div>
 </body>
 </html>

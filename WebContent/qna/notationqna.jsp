@@ -58,49 +58,50 @@
 </script>
 </head>
 <body>
-
-<div id="header">
-<jsp:include page="../module/header.jsp"></jsp:include>
-</div>
-
-<div id="section">
-    <div id="article">
-        <table>
-            <thead>
-                <th>NO.</th>
-                <th>제목</th>
-                <th>색</th>
-                <th>작성자</th>
-            </thead>
-            <tbody>
-            <%for(Object[] row : list){%>
-                <tr>
-                    <td><%=row[0] %></td>
-                    <td><a href="notationqnaDetail.jsp?key=<%=(String)row[1] %>"><%=(String)row[2] %></a></td>
-                    <td><%=(String)row[3] %></td>
-                    <td><%=(String)row[4] %></td>
-                </tr>
-            <%} %>
-            </tbody>
-        </table>
-        <div class="page"></div>
-        <div>
-            <form>
-                <select name="sel">
-                    <option value="sub">제목</option>
-                    <option value="id">작성자</option>
-                 </select>
-                 <input type="text" name="val">
-                 <button>검색</button>
-            </form>
+    <div id="container">
+        <div id="header">
+        <jsp:include page="../module/header.jsp"></jsp:include>
+        </div>
+        
+        <div id="section">
+            <div id="article">
+                <table>
+                    <thead>
+                        <th>NO.</th>
+                        <th>제목</th>
+                        <th>색</th>
+                        <th>작성자</th>
+                    </thead>
+                    <tbody>
+                    <%for(Object[] row : list){%>
+                        <tr>
+                            <td><%=row[0] %></td>
+                            <td><a href="notationqnaDetail.jsp?key=<%=(String)row[1] %>"><%=(String)row[2] %></a></td>
+                            <td><%=(String)row[3] %></td>
+                            <td><%=(String)row[4] %></td>
+                        </tr>
+                    <%} %>
+                    </tbody>
+                </table>
+                <div class="page"></div>
+                <div>
+                    <form>
+                        <select name="sel">
+                            <option value="sub">제목</option>
+                            <option value="id">작성자</option>
+                         </select>
+                         <input type="text" name="val">
+                         <button>검색</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="aside">
+        <%@include file="../module/sideBar.jsp" %>
+        </div>
+        <div id="footer">
+        <%@include file="../module/footer.jsp" %>
         </div>
     </div>
-</div>
-<div id="aside">
-<%@include file="../module/sideBar.jsp" %>
-</div>
-<div id="footer">
-<%@include file="../module/footer.jsp" %>
-</div>
 </body>
 </html>

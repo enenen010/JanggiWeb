@@ -32,70 +32,71 @@
 </script>
 </head>
 <body>
-
-<div id="header">
-<jsp:include page="../module/header.jsp"></jsp:include>
-</div>
-
-<div id="section">
-    <div id="article">
-        <form action="" method="post">
-            <div>
-                <div>
-                    <span>제목:</span>
-                    <span><input type="text" name="sub" value="<%=detail[3] %>"></span>
-                </div>
-                <div>
-                    <span>작성자:</span>
-                    <span><input type="text" name="id" value="<%=detail[6] %>"></span>
-                </div>
-                <div>
-                    <span>색:</span>
-                    <span><input type="text" name="mycolor" value="<%=detail[4] %>"></span>
-                </div>
-                <div>
-                    <div>내용:</div>
-                    <div><input type="text" name="content" value="<%=detail[1] %>"></div>
-                </div>
-                <div>
+    <div id="container">
+        <div id="header">
+        <jsp:include page="../module/header.jsp"></jsp:include>
+        </div>
+        
+        <div id="section">
+            <div id="article">
+                <form action="" method="post">
+                    <div>
+                        <div>
+                            <span>제목:</span>
+                            <span><input type="text" name="sub" value="<%=detail[3] %>"></span>
+                        </div>
+                        <div>
+                            <span>작성자:</span>
+                            <span><input type="text" name="id" value="<%=detail[6] %>"></span>
+                        </div>
+                        <div>
+                            <span>색:</span>
+                            <span><input type="text" name="mycolor" value="<%=detail[4] %>"></span>
+                        </div>
+                        <div>
+                            <div>내용:</div>
+                            <div><input type="text" name="content" value="<%=detail[1] %>"></div>
+                        </div>
+                        <div>
+                            <div>기보:</div>
+                            <div>
+                            	<select name="nkey">
+                            		<%for(Object[] no : notations){ %>
+                            		<option value="<%=no[0] %>"><%=no[1] %></option>
+                            		<%} %>
+                            	</select>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <button>수정완료</button>
+                        <a href="notationqnaDetail.jsp">취소</a>
+                    </div>
+                </form>
+                <div id="notation">
                     <div>기보:</div>
                     <div>
-                    	<select name="nkey">
-                    		<%for(Object[] no : notations){ %>
-                    		<option value="<%=no[0] %>"><%=no[1] %></option>
-                    		<%} %>
-                    	</select>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>기보</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-            <div>
-                <button>수정완료</button>
-                <a href="notationqnaDetail.jsp">취소</a>
-            </div>
-        </form>
-        <div id="notation">
-            <div>기보:</div>
-            <div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>기보</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    
-                    </tbody>
-                </table>
-            </div>
         </div>
-    </div>
-</div>
-<div id="aside">
-<%@include file="../module/sideBar.jsp" %>
-</div>
-<div id="footer">
-<%@include file="../module/footer.jsp" %>
+        <div id="aside">
+        <%@include file="../module/sideBar.jsp" %>
+        </div>
+        <div id="footer">
+        <%@include file="../module/footer.jsp" %>
+        </div>
 </div>
 </body>
 </html>
