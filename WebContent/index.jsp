@@ -10,7 +10,11 @@
 %>
 <style type="text/css" rel="stylesheet">
     #container{
-        width: 1200px;
+        width: 100%;
+        padding-left: 300px;
+    }
+    #section{
+        clear: both;
     }
 </style>
 </head>

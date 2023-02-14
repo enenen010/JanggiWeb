@@ -24,9 +24,6 @@
         background-image: url('<%=root %>/imgs/logo.png');
 	}
 
-	
-    
-
     #nav{
         padding: 0px;
         clear: both;
@@ -43,7 +40,7 @@
         list-style: none;
         display: block;
         width: 200px;
-        margin-left: -3px;
+        margin-left: 0px;
     }
     #nav>ul>li{
         margin-left: 0px;
@@ -111,8 +108,21 @@
     }
 
     $(function(){
-        $('#nav>ul>li>ul').hide();
-        $('#nav>ul>li>ul').eq(1).show();
+        $('#nav>ul>li').find('ul').hide()
+        .on('mouseleave', function(e){
+            $('#nav>ul>li').css('backgroundColor','gray')
+            .find('ul').hide();
+        })
+        .end()
+        .on('mouseenter', function(e){
+            $(e.target).next().show()
+            .parent().css('backgroundColor','rgb(100, 100, 100)');
+        })
+        .on('mouseleave', function(e){
+            $(e.target).next().hide()
+            .parent().css('backgroundColor','gray');
+        })
+        
         
     });
 </script>
