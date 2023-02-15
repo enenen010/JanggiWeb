@@ -19,6 +19,7 @@ public class LoginInsertContainer extends HttpServlet{
 		LoginDto bean = loginDao.getOne(id);
 		
 		req.setCharacterEncoding("UTF-8");
+		resp.setContentType("text/html;charset=utf-8");
 		if(bean==null) {
 			String pw = req.getParameter("pw");
 			String name = req.getParameter("name");
@@ -32,14 +33,12 @@ public class LoginInsertContainer extends HttpServlet{
 			PrintWriter out=null;
 			try {
 				 out = resp.getWriter();
-				 out.print("<script type=\"text/javascript\" >alert('가입을 축하드립니다.');</script>");
-				 resp.sendRedirect("/login/login.jsp");
+				 out.println("<script type=\"text/javascript\" >alert('가입을 축하드립니다.');");
+				 out.println("location.replace(\"login.jsp\");");
+				 out.println("</script>");
 			}finally {
-				if(out!=null)out.close();
+ 				 if(out!=null)out.close();
 			}
-			
-			
-			resp.sendRedirect("login.jsp");
 		}else {
 			req.setAttribute("fail", "o");
 			resp.sendRedirect("join.jsp");

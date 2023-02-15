@@ -115,7 +115,7 @@
         	<h2>회원가입</h2>
             <div id="section">
                 <div id="article">
-                    <form action="loginIsert" method="post">
+                    <form action="loginIsert" method="post" accept-charset="utf-8">
                         <div>
                             <div>
                                 <label for="id">아이디</label>

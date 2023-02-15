@@ -25,28 +25,28 @@ public class LoginContainer extends HttpServlet{
 		LoginDto bean = loginDao.getOne(req.getParameter("id"));
 		
 		req.setCharacterEncoding("UTF-8");
-		if(bean==null) {
-			resp.setContentType("text/html;charset=utf-8");
-			out = resp.getWriter();
-			out.println("<script>");
-			out.println("alert('아이디 혹은 패스워드가 잘못되었습니다.')");
-			out.println("location.replace(\"login.jsp\")");
-			out.println("</script>");
-			out.close();
-		}else{
-			if(bean.getPw().equals(req.getParameter("pw"))) {
-				req.getSession().setAttribute("id", req.getParameter("id"));
-				resp.sendRedirect(req.getContextPath());
-			}else {
-				out = resp.getWriter();
+		resp.setContentType("text/html;charset=utf-8");
+		out = resp.getWriter();
+		
+		try {
+			if(bean==null) {
 				out.println("<script>");
-				out.println("alert('패스워드가 잘못되었습니다.')");
+				out.println("alert('아이디 혹은 패스워드가 잘못되었습니다.')");
 				out.println("location.replace(\"login.jsp\")");
 				out.println("</script>");
-				out.close();
+			}else{
+				if(bean.getPw().equals(req.getParameter("pw"))) {
+					req.getSession().setAttribute("id", req.getParameter("id"));
+					resp.sendRedirect(req.getContextPath());
+				}else {
+					out.println("<script>");
+					out.println("alert('패스워드가 잘못되었습니다.')");
+					out.println("location.replace(\"login.jsp\")");
+					out.println("</script>");
+				}
 			}
-			
+		}finally {
+			 if(out!=null)out.close();
 		}
 	}
-
 }
