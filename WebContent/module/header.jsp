@@ -8,14 +8,8 @@
 <title>Insert title here</title>
 <style type="text/css" rel="stylesheet">
 	#headline{
-
-        display: block;
-        width: 1000px;
-        margin: 0px auto;
-        margin-left: 200px;
     }
 	#headline>span{
-        float: left;
 	}
 	#headline>span>a>h1{
         text-indent: -9999px;
@@ -32,7 +26,8 @@
         height: 100%;
         left: 0px;
         top: 0px;
-        background-color: aqua;
+        background-color: rgb(35, 35, 35);
+        align-content: center;
     }
     #nav>ul{
         padding: 0px;
@@ -45,7 +40,7 @@
     #nav>ul>li{
         margin-left: 0px;
         padding: 0px;
-        background-color: gray;
+        background-color: rgb(35, 35, 35);
     }
     #nav>ul>li>a,
     #nav>ul>li>ul>li>a{
@@ -59,7 +54,7 @@
         margin-right: 3px;
     }
     #nav>ul>li>a:hover{
-        background-color: rgb(100, 100, 100);
+        background-color: rgb(25, 25, 25);
     }
     #nav>ul>li>ul{
         display: block;
@@ -70,21 +65,24 @@
         height: 100%;
         left: 196px;
         top: 0px;
-        background-color: rgb(100, 100, 100);
+        background-color: rgb(25, 25, 25);
     }
     #nav>ul>li>ul>li{
         padding: 0px;
-        background-color: rgb(100, 100, 100);
+        background-color: rgb(25, 25, 25);
     }
     #nav>ul>li>ul>li>a:hover{
-        background-color: rgb(80, 80, 80);
+        background-color: rgb(15, 15, 15);
     }
 
-    #nav>div{
-		width: 200px;
+    #nav>div:nth-child(3){
+		width: 140px;
         height: 50px;
+        border: 0px solid;
+        border-radius: 20px;
+        margin: 30px auto;
 	}
-    #nav>div>a{
+    #nav>div:nth-child(3)>a{
     	display:inline-block;
         width: 200px;
         height: 50px;
@@ -110,29 +108,29 @@
     $(function(){
         $('#nav>ul>li').find('ul').hide()
         .on('mouseleave', function(e){
-            $('#nav>ul>li').css('backgroundColor','gray')
+            $('#nav>ul>li').css('backgroundColor','rgb(35, 35, 35)')
             .find('ul').hide();
         })
         .end()
         .on('mouseenter', function(e){
             $(e.target).next().show()
-            .parent().css('backgroundColor','rgb(100, 100, 100)');
+            .parent().css('backgroundColor','rgb(25, 25, 25)');
         })
         .on('mouseleave', function(e){
             $(e.target).next().hide()
-            .parent().css('backgroundColor','gray');
-        })
+            .parent().css('backgroundColor','rgb(35, 35, 35)');
         
+        });
         
     });
 </script>
 </head>
 <body>
     <div id="navBtn"></div>
+    <div id="nav">
     <div id="headline">
         <span><a href="<%=root %>"><h1>12K-Chess</h1></a></span>
     </div>
-    <div id="nav">
 		<ul>
             <li>
                 <a href="#">경기</a>
@@ -156,7 +154,7 @@
             <li>
                 <a href="#">정보</a>
                 <ul>
-                    <li><a href="<%=root %>">게임 룰</a></li>
+                    <li><a href="<%=root %>/info/rule.jsp">게임 룰</a></li>
                     <li><a href="<%=root %>">경기신청</a></li>
                 </ul>
             </li>

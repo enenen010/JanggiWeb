@@ -8,33 +8,27 @@
 <%
 	//String id=(String)session.getAttribute("id");
 %>
-<style type="text/css" rel="stylesheet">
-    #container{
-        width: 100%;
-        padding-left: 300px;
-    }
-    #section{
-        clear: both;
-    }
+<link href="css/main.css" rel="stylesheet" type="text/css" />
+<style type="text/css" rel="stylesheet">  
 </style>
 </head>
 <body>
 <div id="container">
-    <div id="header">
-            <jsp:include page="./module/header.jsp"></jsp:include>
-    </div>
-        
-    <div id="section">
-        <div id="article">
-        환영합니다
+    <div>
+        <div id="header">
+                <jsp:include page="./module/header.jsp"></jsp:include>
+        </div>
+            
+        <div id="section">
+            <div id="article">
+            환영합니다
+            </div>
+        </div>
+        <div id="aside">
+            <%@include file="./module/sideBar.jsp" %>
         </div>
     </div>
-    <div id="aside">
-        <%@include file="./module/sideBar.jsp" %>
-    </div>
-     <div id="footer">
-        <%@include file="./module/footer.jsp" %>
-    </div>
+    <%@include file="./module/footer.jsp" %>
 </div>
 
 </body>

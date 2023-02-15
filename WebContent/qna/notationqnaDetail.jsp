@@ -20,66 +20,70 @@
 	sql="SELECT notation FROM notation WHERE NKEY = '"+detail[5]+"' ";
 	String[] notation = ((String)mysqlWork.executeQueryOne(sql, 1)[0]).split("/");
 %>
+<link href="../css/main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <div id="container">
-        <div id="header">
-        <jsp:include page="../module/header.jsp"></jsp:include>
-        </div>
-        
-        <div id="section">
-            <div id="article">
-                <div>
+        <div>
+
+            <div id="header">
+            <jsp:include page="../module/header.jsp"></jsp:include>
+            </div>
+            
+            <div id="section">
+                <div id="article">
                     <div>
-                        <a href="notationqnaAdd.jsp?key=<%=request.getParameter("key") %>">수정</a>
-                        <a href="notationqnaDetail.jsp">삭제</a>
-                    </div>
-                    <div>
-                        <span>제목:</span>
-                        <span><%=detail[3] %></span>
-                    </div>
-                    <div>
-                        <span>작성자:</span>
-                        <span><%=detail[6] %></span>
-                    </div>
-                    <div>
-                        <span>색:</span>
-                        <span><%=detail[4] %></span>
-                    </div>
-                    <div>
-                        <div>내용:</div>
-                        <div><%=detail[1] %></div>
-                    </div>
-                </div>
-                <div id="notation">
-                    <div>기보:</div>
-                    <div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>기보</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            <%for(int i=0; i<notation.length; i++){%>
-                                <tr>
-                                    <td><%=i %></td>
-                                    <td><%=notation[i] %></td>
-                                </tr>
+                        <div id="cont">
+                            <%if(session.getAttribute("id").equals(detail[6])){ %>
+                            <a href="notationqnaAdd.jsp?key=<%=request.getParameter("key") %>">수정</a>
+                            <a href="notationqnaDetail.jsp">삭제</a>
                             <%} %>
-                            </tbody>
-                        </table>
+                        </div>
+                        <div>
+                            <span>제목:</span>
+                            <span><%=detail[3] %></span>
+                        </div>
+                        <div>
+                            <span>작성자:</span>
+                            <span><%=detail[6] %></span>
+                        </div>
+                        <div>
+                            <span>색:</span>
+                            <span><%=detail[4] %></span>
+                        </div>
+                        <div>
+                            <div>내용:</div>
+                            <div><%=detail[1] %></div>
+                        </div>
+                    </div>
+                    <div id="notation">
+                        <div>기보:</div>
+                        <div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>기보</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <%for(int i=0; i<notation.length; i++){%>
+                                    <tr>
+                                        <td><%=i %></td>
+                                        <td><%=notation[i] %></td>
+                                    </tr>
+                                <%} %>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div id="aside">
+            <%@include file="../module/sideBar.jsp" %>
+            </div>
         </div>
-        <div id="aside">
-        <%@include file="../module/sideBar.jsp" %>
-        </div>
-        <div id="footer">
         <%@include file="../module/footer.jsp" %>
-        </div>
     </div>
 </body>
 </html>
