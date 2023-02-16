@@ -8,6 +8,8 @@
 <%@ page import="java.util.*" %>
 <%@ page import="java.sql.*" %>
 <%@ page import="com.jang.MysqlWork" %>
+<%request.setCharacterEncoding("UTF-8"); %>
+<%response.setCharacterEncoding("UTF-8"); %>
 <style type="text/css" rel="stylesheet">  
 	body{
 	height:100%;
@@ -110,9 +112,9 @@
     	
 		$('form').submit(function(){
             for(input of $('form>div>div>input')){ 
-                $(input).next().remove();
+            	$('form>div>div').last().next().remove();
                 if($(input).val()==''){
-                    $(input).after($('<span/>')
+                	$('form>div>div').last().after($('<span/>')
                             .css('color','red')
                             .text($(input).prev().text()+'를 입력하지 않았습니다.'));
                     return false;
@@ -129,7 +131,7 @@
             <h2>로그인</h2>
             <div id="section">
                 <div id="article">
-                    <form action="loginGo" method="post">
+                    <form action="loginGo" method="post" accept-charset="UTF-8">
                         <div>
                             <div>
                                 <label for="id">아이디</label>

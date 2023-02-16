@@ -35,8 +35,8 @@
                     <div>
                         <div id="cont">
                             <%if(session.getAttribute("id").equals(detail[6])){ %>
-                            <a href="notationqnaAdd.jsp?key=<%=request.getParameter("key") %>">수정</a>
-                            <a href="notationqnaDetail.jsp">삭제</a>
+                            <a href="notationqnaEdit.jsp?key=<%=request.getParameter("key") %>">수정</a>
+                            <a href="NotationQnaDeleteOne?key=<%=request.getParameter("key") %>">삭제</a>
                             <%} %>
                         </div>
                         <div>

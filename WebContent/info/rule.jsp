@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>12K-Chese</title>
+<%request.setCharacterEncoding("UTF-8"); %>
+<%response.setCharacterEncoding("UTF-8"); %>
 <%
 	//String id=(String)session.getAttribute("id");
 %>

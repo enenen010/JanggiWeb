@@ -2,6 +2,7 @@ package com.login;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,7 +19,8 @@ public class LoginInsertContainer extends HttpServlet{
 		LoginDao loginDao = new LoginDao();
 		LoginDto bean = loginDao.getOne(id);
 		
-		req.setCharacterEncoding("UTF-8");
+		req.setCharacterEncoding("utf-8");
+		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html;charset=utf-8");
 		if(bean==null) {
 			String pw = req.getParameter("pw");
@@ -26,22 +28,18 @@ public class LoginInsertContainer extends HttpServlet{
 			String tell = req.getParameter("tell");
 			String authority = "C";
 			
-			req.setAttribute("fail", "x");
 			loginDao.setConnection();
 			int result = loginDao.pushList(id, pw, name, tell, authority);
 			
-			PrintWriter out=null;
-			try {
-				 out = resp.getWriter();
-				 out.println("<script type=\"text/javascript\" >alert('가입을 축하드립니다.');");
-				 out.println("location.replace(\"login.jsp\");");
-				 out.println("</script>");
-			}finally {
- 				 if(out!=null)out.close();
-			}
+			resp.sendRedirect("../sysmsg/message.jsp?"
+					+"msg="+URLEncoder.encode("가입을 축하드립니다.", "UTF-8")+"&"
+					+"next="+"../login/login.jsp"+"&"
+					);
 		}else {
-			req.setAttribute("fail", "o");
-			resp.sendRedirect("join.jsp");
+			resp.sendRedirect("../sysmsg/message.jsp?"
+					+"msg="+URLEncoder.encode("중복된 ID 입니다.", "UTF-8")+"&"
+					+"next="+"../login/join.jsp"+"&"
+					);
 		}
 	}
 }

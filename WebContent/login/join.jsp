@@ -96,9 +96,9 @@
     $(function(){
     	$('form').submit(function(){
             for(input of $('form>div>div>input')){ 
-                $(input).next().remove();
+                $('form>div>div').last().next().remove();
                 if($(input).val()==''){
-                    $(input).after($('<span/>')
+                    $('form>div>div').last().after($('<span/>')
                             .css('color','red')
                             .text($(input).prev().text()+'를 입력하지 않았습니다.'));
                     return false;
@@ -115,7 +115,7 @@
         	<h2>회원가입</h2>
             <div id="section">
                 <div id="article">
-                    <form action="loginIsert" method="post" accept-charset="utf-8">
+                    <form action="loginIsert" method="post">
                         <div>
                             <div>
                                 <label for="id">아이디</label>

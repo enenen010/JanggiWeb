@@ -11,18 +11,27 @@
 <%
 	//String id=(String)session.getAttribute("id");
 	MysqlWork mysqlWork = new MysqlWork();
-	String sql;
+	String sql="SELECT NQID, CONTENT, IMG, SUB, MYCOLOR, NKEY, ID "+
+			"FROM notation_qna "+
+			"WHERE NQID = '"+request.getParameter("key")+"' ";
+	
+	Object[] detail = mysqlWork.executeQueryOne(sql, 7);
+	//detail[5];
 			
-	sql="SELECT Nkey, title, notation FROM notation "+
-	    "WHERE id = '"+(String)session.getAttribute("id")+"' ";
+	sql="SELECT Nkey, title, notation FROM notation WHERE id = '"+(String)session.getAttribute("id")+"' ";
 	List<Object[]> notations = mysqlWork.executeQuery(sql, 3);
+	
 %>
 <link href="../css/main.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" >
 	$(function(){
+        $('select').eq(0).val('<%=detail[4] %>').prop("selected",true)
+             .end().eq(1).val('<%=detail[5] %>').prop("selected",true)
+             ;
 
-    	$('form').submit(function(){
+
+        $('form').submit(function(){
             for(input of $('form>div>div>:nth-child(2n)').children()){ 
                 $('form>div>div').last().next().remove();
                 if($(input).val()==''){
@@ -33,7 +42,9 @@
                 }
              }
         });
-    });
+
+
+    })
 </script>
 </head>
 <body>
@@ -45,12 +56,13 @@
             
             <div id="section">
                 <div id="article">
-                    <form action="NotationQnaInsertOne" method="post">
+                    <form action="NotationQnaUpdateOne" method="post">
                         <div>
-                            <input type="hidden" value="<%=session.getAttribute("id") %>" name="id">
+                            <input type="hidden" value="<%=detail[0] %>" name="nqid">
+                            <input type="hidden" value="<%=detail[6] %>" name="id">
                             <div>
                                 <span>제목</span>
-                                <span><input type="text" name="sub"></span>
+                                <span><input type="text" name="sub" value="<%=detail[3] %>"></span>
                             </div>
                             <div>
                                 <span>색</span>
@@ -63,7 +75,7 @@
                             </div>
                             <div>
                                 <div>내용</div>
-                                <div><textarea name="content" cols="30" rows="10"></textarea></div>
+                                <div><textarea name="content"><%=detail[1] %></textarea></div>
                             </div>
                             <div>
                                 <div>기보</div>
@@ -77,8 +89,8 @@
                             </div>
                         </div>
                         <div>
-                            <button>등록</button>
-                            <a href="notationqna.jsp">취소</a>
+                            <button>수정완료</button>
+                            <a href="notationqnaDetail.jsp">취소</a>
                         </div>
                     </form>
                 </div>
