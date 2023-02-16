@@ -66,15 +66,17 @@
     #container #section>#article{}
     #container #section>#article>h2{
         display:block;
-    	margin: 50px auto;
+    	margin: 0px auto;
     	padding-top: 10px;
     	width: 400px;
     	font-size: 50px;
     	height: 35px;
     	color: rgb(200,200,200);
+    	padding-bottom: 50px;
     }
     #container #section>#article>h2+div{
     	padding-right: 50px;
+    	margin-bottom: 50px;
     }
     #container #section>#article>h2+div>a{
         margin-left: 20px;
@@ -96,11 +98,114 @@
 	}
 	#container #section>#article table{
 		display: block;
-		width: 900px;
-		
+		width: 800px;
+		height: 550px;
+        clear: both;
+        margin: 0px auto;
+        border-radius: 10px;
+        border: 3px solid gray;
+        border-collapse:collapse;
 	}
-	#container #section>#article table>thead{}
-	#container #section>#article table>tbody{}
+	#container #section>#article table>thead{
+    }
+    #container #section>#article table>thead>tr{
+    	border: 3px solid gray;
+    }
+    #container #section>#article table>thead>tr>th{
+        text-align: center;
+        background-color: rgb(80,80,80);
+        border: 3px solid gray;
+        text-decoration: none;
+    }
+	#container #section>#article table>tbody{
+        padding-top: 10px;
+    }
+    #container #section>#article table>tbody>tr{
+        border: 3px solid gray;
+        border-collapse:collapse;
+    }
+    #container #section>#article table>tbody>tr>td{
+    	height: 35px;
+        color: rgb(200,200,200);
+        text-align: center;
+    }
+    #container #section>#article table>tbody>tr>td:nth-child(1){width: 150px;}
+    #container #section>#article table>tbody>tr>td:nth-child(2){width: 400px;}
+    #container #section>#article table>tbody>tr>td:nth-child(3){width: 50px;}
+    #container #section>#article table>tbody>tr>td:nth-child(4){width: 200px;}
+    #container #section>#article table>tbody>tr>td>a{
+    	display:block;
+        width: 650px;
+        height: 35px;
+        color: rgb(200,200,200);
+        text-align: center;
+        text-decoration: none;
+        border: 0px solid;
+        border-radius: 10px;
+        padding-top: 10px;
+    }
+    #container #section>#article table>tbody>tr>td>a:hover{background-color: orange;}
+    .page{
+        display: table;
+    	margin: 0px auto;
+    }
+    .page>a{
+    	display: inline-block;
+    	width: 30px;
+    	height: 20px;
+    	background-color: gray;
+    	border: 0px solid;
+    	border-radius: 3px;
+    	text-decoration: none;
+    	text-align: center;
+    	margin-top: 20px;
+    	margin-right: 5px;
+        color: rgb(200,200,200);
+    }
+    .page>a:hover{background-color: orange;}
+    .page+div{
+    	display:block;
+    	margin: 0px auto;
+    }
+    .page+div>form{
+    	padding-top: 10px;
+    	display: block;
+    	width: 600px;
+    	margin: 0px auto;
+    }
+    .page+div>form select{
+        width: 150px;
+        height: 35px;
+        background-size: 20px;
+        padding: 5px 30px 5px 10px;
+        border-radius: 4px;
+        outline: 0 none;
+    }
+    .page+div>form select option{
+        background: black;
+        color: #fff;
+        padding: 3px 0;
+    }
+    .page+div>form input{
+        width: 300px;
+        height: 23px;
+        background-size: 20px;
+        padding: 5px 30px 5px 10px;
+        border-radius: 4px;
+        outline: 0 none;
+    }
+
+    .page+div>form button{
+        margin-top: 0px;
+        padding: 0px;
+        display: inline-block;
+        width: 60px;
+        height: 35px;        
+        border-radius: 4px;
+        outline: 0 none;
+    }
+    
+
 </style>
 <script type="text/javascript" src="../js/jquery-1.12.4.min.js"></script>
 <script type="text/javascript" src="../js/popup.js"></script>
@@ -117,7 +222,7 @@
             $('.page')
             .append($('<a/>')
             		.attr('href','notationqna.jsp?page='+i+'&'+queStr)
-            		.text('['+(i+1)+']'));
+            		.text((i+1)));
         }
         
         $('form').attr('action',location.pathname+'?page=0&');
