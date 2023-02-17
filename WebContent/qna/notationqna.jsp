@@ -1,3 +1,4 @@
+<%@page import="java.io.Console"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -20,8 +21,8 @@
 	
 	sql="SELECT CAST(NUM AS signed integer), NQID, SUB, MYCOLOR, ID "+
 		 "FROM (SELECT @RNUM:= @RNUM +1 AS NUM, A.* "+
-		 "FROM  notation_qna A, (SELECT @RNUM := 0) B"+
-		 ") A WHERE 1=1 ";
+		 "FROM  notation_qna A, (SELECT @RNUM := 0) B WHERE 1=1 ";
+		 
 	
 	sql2="SELECT COUNT(NQID) FROM notation_qna WHERE 1=1 ";
 	
@@ -42,6 +43,8 @@
 		}
 	}
 	
+	sql+=") A ";
+	
 	
 	
 	int pageLength=10;
@@ -57,7 +60,7 @@
 	
 			
 	int maxPage = (int)((long)mysqlWork.executeQueryOne(sql2, 1)[0]);
-	maxPage = maxPage/pageLength;
+	maxPage = maxPage/pageLength + (maxPage%pageLength>0?1:0);
 %>
 <link href="../css/main.css" rel="stylesheet" type="text/css" />
 <link href="../css/pop.css" rel="stylesheet" type="text/css" />

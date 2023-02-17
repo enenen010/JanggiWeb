@@ -22,7 +22,7 @@
 	List<Object[]> notations = mysqlWork.executeQuery(sql, 3);
 	
 %>
-<link href="../css/main.css" rel="stylesheet" type="text/css" />
+<link href="../css/main2.css" rel="stylesheet" type="text/css" />
 <style type="text/css" rel="stylesheet">
     #container #section{}
     #container #section>#article{}
@@ -35,20 +35,17 @@
     	border: 3px solid gray;
     	border-radius: 10px;
     }
-    #cont{}
-    #container #article>div:first-child>div{display:block; margin: 0px auth; width: 600px; padding: 30px;}
-    #container #article>div:first-child>div:nth-child(2){}
-    #container #article>div:first-child>div:nth-child(3){}
-    #container #article>div:first-child>div:nth-child(4){}
-    #container #article>div:first-child>div:nth-child(5){}
     
-    #container #article>div:first-child>div>span{color: rgb(200,200,200); font-weight: 50px; }
-    #container #article>div:first-child>div>span:first-child{display:inline-block; width: 200px;}
-    #container #article>div:first-child>div>span:last-child{width: 400px;}
+    #container form>div{display:block; margin: 0px auth; width: 500px; padding: 30px;}
+    #container form>div>div:first-child>div:nth-child(2){}
+    #container form>div>div:first-child>div:nth-child(3){}
+    #container form>div>div:first-child>div:nth-child(4){}
+    #container form>div>div:first-child>div:nth-child(5){}
     
-    #container #article>div:first-child>div>div{color: rgb(200,200,200); font-weight: 50px; }
-    #container #article>div:first-child>div>div:first-child{display:inline-block; width: 200px;}
-    #container #article>div:first-child>div>div:last-child{width: 400px; padding-top: 30px;}
+    #container form>div>div>span{color: rgb(200,200,200); }
+    #container form>div>div>span:first-child{display:inline-block; width: 100px;}
+    #container form>div>div>span:last-child{width: 400px;}
+    
     
     #container #section>#article{}
     
@@ -118,7 +115,7 @@
         text-align: center;
     }
     
-        .page+div>form{
+    form{
     	padding-top: 10px;
     	display: block;
     	width: 600px;
@@ -147,13 +144,40 @@
     }
 
     form button{
+    	float:left;
         margin-top: 0px;
         padding: 0px;
-        display: inline-block;
         width: 60px;
         height: 35px;        
         border-radius: 4px;
         outline: 0 none;
+        border: 3px solid gray;
+        border-radius: 10px;
+    }
+    
+    form button:hover{
+        background-color: orange;
+    }
+    
+    #cont{}
+    form a{
+    	margin-left: 20px;
+        float: left;
+        display: block;
+        width: 60px;
+        height: 30px;
+        background-color: #669966;
+        text-decoration: none;
+        color: rgb(20,20,20);
+        font-weight: bold;
+        text-align: center;
+        line-height: 30px;
+        border: 3px solid gray;
+        border-radius: 10px;
+    }
+    
+    form a:hover{
+        background-color: orange;
     }
     
 </style>
@@ -189,6 +213,7 @@
             </div>
             
             <div id="section">
+            	<h2>수정</h2>
                 <div id="article">
                     <form action="NotationQnaUpdateOne" method="post">
                         <div>
@@ -208,21 +233,21 @@
                                 </span>
                             </div>
                             <div>
-                                <div>내용</div>
-                                <div><textarea name="content"><%=detail[1] %></textarea></div>
+                                <span>내용</span>
+                                <span><textarea name="content"><%=detail[1] %></textarea></span>
                             </div>
                             <div>
-                                <div>기보</div>
-                                <div>
+                                <span>기보</span>
+                                <span>
                                     <select name="nkey">
                                         <%for(Object[] no : notations){ %>
                                         <option value="<%=no[0] %>"><%=no[1] %></option>
                                         <%} %>
                                     </select>
-                                </div>
+                                </span>
                             </div>
                         </div>
-                        <div>
+                        <div id="cont">
                             <button>수정완료</button>
                             <a href="notationqnaDetail.jsp">취소</a>
                         </div>
@@ -230,7 +255,6 @@
                 </div>
             </div>
             <div id="aside">
-            <%@include file="../module/sideBar.jsp" %>
             </div>
         </div>
         <%@include file="../module/footer.jsp" %>

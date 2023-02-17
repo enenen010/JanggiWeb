@@ -10,6 +10,20 @@
 %>
 <link href="css/main.css" rel="stylesheet" type="text/css" />
 <style type="text/css" rel="stylesheet">  
+h2{
+	display:block;
+    margin: 0px auto;
+    padding-top: 10px;
+    width: 400px;
+    font-size: 50px;
+    height: 35px;
+    color: rgb(200,200,200);
+    padding-bottom: 50px;
+}
+img{
+	display: block;
+	margin: 0px auto;
+}
 </style>
 </head>
 <body>
@@ -21,7 +35,8 @@
             
         <div id="section">
             <div id="article">
-            환영합니다
+            	<h2>환영합니다</h2>
+            	<img src="imgs/big01.png">
             </div>
         </div>
         <div id="aside">

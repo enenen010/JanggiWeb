@@ -83,7 +83,7 @@
     #container #section>#article>h2+div>a:hover {
 		background-color:orange;
 	}
-	#notation{float: left; position: absolute; left:210px; top:100px;}
+	#notation{float: left; position: absolute; left:1400px; top:100px;}
 	#container #section>#article table{
 		display: block;
         clear: both;
@@ -114,6 +114,25 @@
     	height: 35px;
         color: rgb(200,200,200);
         text-align: center;
+    }
+    #cont a{
+    	margin-right: 30px;
+        float: right;
+        display: block;
+        width: 60px;
+        height: 30px;
+        background-color: #669966;
+        text-decoration: none;
+        color: rgb(20,20,20);
+        font-weight: bold;
+        text-align: center;
+        line-height: 30px;
+        border: 3px solid gray;
+        border-radius: 10px;
+    }
+    
+    #cont a:hover{
+        background-color: orange;
     }
 </style>
 </head>
